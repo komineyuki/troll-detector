@@ -1,0 +1,261 @@
+
+.group{
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 7px;
+}
+
+.row_group{
+    flex: auto;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.report h1 {
+    font-family: "Roboto Mono", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    color: #d5d5d5;
+    margin-top: 5px;
+}
+
+#text3{
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+}
+
+.text_underline{
+    position: relative; /*.text_underline::beforeの親要素*/
+    border-top: 1px solid #c2c2c2; /*text3の下線*/
+}
+
+/*共通のstyle*/
+.text_underline::before,
+.text_underline::after{
+
+    position: absolute; 
+    bottom: 0px; /*中央配置*/
+    width: 0px; /*アニメーションで0pxから50%に*/
+    height: 2px; /*高さ*/
+    content: '';
+    background-color: #3be5ae; /*アニメーションの色*/
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+
+/*中央から右へのアニメーション*/
+.text_underline::before{
+    left: 50%; /*中央配置*/
+}
+
+/*中央から左へのアニメーション*/
+.text_underline::after{ 
+    right: 50%; /*中央配置*/
+}
+
+#text3:focus + .text_underline::before,
+#text3:focus + .text_underline::after{
+    width: 50%;
+}
+
+
+
+/*選択ボックス*/
+/*  */
+
+.selectbox-3 {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.selectbox-3::after {
+    position: absolute;
+    right: 15px;
+    width: 10px;
+    height: 7px;
+    background-color: #535353;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    content: '';
+    pointer-events: none;
+}
+
+.selectbox-3 select {
+    appearance: none;
+    min-width: 230px;
+    height: 2.8em;
+    padding: .4em calc(.8em + 30px) .4em .8em;
+    border: 1px solid #d0d0d0;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #333333;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* ポップアップ */
+/*  */
+
+.checkbox_input {
+    display: none;
+}
+
+/* ポップアップwindow部分 */
+#overlay {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 70;
+    width: 100%;
+    height: 100%;
+}
+/* オーバーレイの背景部分 */
+#bg_gray {
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 80;
+}
+/* ウィンドウ部分 */
+#window {
+    width: 50%;
+    padding: 20px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: #5e5e5e;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px -6px rgba(0,0,0,0.6);
+    z-index: 90;
+    opacity: 0;
+}
+/* 閉じるボタン */
+#btn_cloth {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    z-index: 100;
+    cursor: pointer;
+}
+#btn_cloth:hover {
+    opacity: 0.7;
+}
+#btn_cloth span,
+#btn_cloth span::before {
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background: #fff;
+}
+#btn_cloth span {
+    transform: rotate(45deg);
+}
+#btn_cloth span::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    transform: rotate(-90deg);
+}
+
+
+/* クリックで表示 */
+#popup:checked ~ #overlay {
+    visibility: visible;
+}
+#popup:checked ~ #overlay #window {
+    animation: fadein 250ms forwards;
+    animation-timing-function: ease-in-out;
+}
+@keyframes fadein {
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* コンテンツ部分のスタイル */
+#txt_label {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #868686;
+}
+#txt_label_p {
+    text-align: center;
+    margin: 10px;
+}
+#txt_label:hover {
+    opacity: 0.7;
+}
+
+/* ボタン */
+/*  */
+
+/*まずはお決まりのボックスサイズ算出をborer-boxに */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;/*rem算出をしやすくするために*/
+}
+
+.btn,
+a.btn,
+button.btn {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+
+.btn--orange,
+a.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+}
+.btn--orange:hover,
+a.btn--orange:hover {
+  color: #fff;
+  background: #f56500;
+}

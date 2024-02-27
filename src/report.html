@@ -1,0 +1,75 @@
+<div class="report">
+    <h1>
+        Report player
+    </h1>
+    <p>
+        Please report toxic players for better detection!
+    </p>
+
+    <div class="group">
+        <label for="text3" id="l_text3">Toxic player ID</label>
+        <input id="text3" type="text" placeholder="ToxicPlayerName#12345">
+        <div class="text_underline"></div>
+    </div>
+
+    <div class="group">
+        <label for="text3" id="l_text3">Type</label>
+        <div class="row_group">
+            <label class="selectbox-3">
+                <select>
+                    <option>Trash-talking</option>
+                    <option>Flaming</option>
+                    <option>Spamming</option>
+                    <option>Inappropriate Roleplay</option>
+                    <option>Contrary Play</option>
+                    <option>Aiding the Enemy</option>
+                </select>
+            </label>
+
+
+            <!-- input要素の配置は、ポップアップ部分より前にする -->
+            <input class="checkbox_input" type="checkbox" id="popup">
+            <!-- ポップアップ部分 -->
+            <div id="overlay">
+                <label for="popup" id="bg_gray"></label> <!-- ウィンドウの外のグレーの領域 -->
+                <div id="window"> <!-- ウィンドウ部分 -->
+                    <label for="popup" id="btn_cloth"> <!-- 閉じるボタン -->
+                        <span></span>
+                    </label>
+                    <div id="msg"> <!-- ウィンドウのコンテンツ -->
+                        <h1>What is type?</h1>
+                        <p>Trash-talking - Using words to put down other or make fun of other players.</p>
+                        <p>Flaming – Flaming is displaying hostility towards other players in a game by insulting, swearing or using otherwise offensive language towards them.</p>
+                        <p>Spamming – Spamming, in the context of video games, refers to the repeated use of the same item or action.</p>
+                        <p>Inappropriate Roleplay – Pretending you are a different person to obtain some kind of specific reaction.</p>
+                        <p>Contrary Play – Playing the game outside of what is intended by most players.</p>
+                        <p>Aiding the Enemy – Disregarding strategic play to make it easier for the opposing team to win.</p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <!-- ページのコンテンツ -->
+            <p id="txt_label_p"><label for="popup" id="txt_label">What is type?</label></p>
+
+
+        </div>
+    </div>
+
+    <div class="group">
+        <label for="text3" id="l_text3">Remark</label>
+        <input id="text3" type="text" placeholder="Write anything to add">
+        <div class="text_underline"></div>
+    </div>
+
+    <div class="group">
+        <label for="text3" id="l_text3">Your mail address</label>
+        <input id="text3" type="text" placeholder="yourmailaddress@example.com">
+        <div class="text_underline"></div>
+    </div>
+
+    <div class="group">
+        <a href="" class="btn btn--orange">Report</a>
+    </div>
+    
+
+</div>

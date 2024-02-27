@@ -7,7 +7,9 @@
   <link rel="stylesheet" href="../../css/header.css" />
   <link rel="stylesheet" href="../../css/desktop.css" />
   <link rel="stylesheet" href="../../css/modal.css" />
-  <title>Overwolf Sample App - Desktop page</title>
+  <link rel="stylesheet" href="../../css/report.css" />
+  <title>Troll Detector</title>
+
 </head>
 
 <body class="desktop">
@@ -15,10 +17,9 @@
 
   <header id="header" class="app-header">
     <img src="../../img/header_icon.svg" />
-    <h1>Sample App / desktop window</h1>
+    <h1>Troll Detector</h1>
     <div class="window-controls-group">
       <button id="minimizeButton" class="window-control window-control-minimize" />
-      <button id="maximizeButton" class="window-control window-control-maximize" />
       <button id="closeButton" class="window-control window-control-close" />
     </div>
   </header>
@@ -26,44 +27,36 @@
   <!-- --------------------------------- Main -------------------------------- -->
   <main>
     <div class="desktopTop">
-      <h1>Overwolf Sample App</h1>
+      <h1>Troll Detector</h1>
       <p>
-        Welcome to the Overwolf tutorial app for developers.<br />
-        Learn how to build an app by using one!
+        Welcome to Troll Detector.<br />
+        When you start a match, this app will tell you which players are likely to be trolls based on reports.
       </p>
       <div id="version"></div>
     </div>
     <div class="desktopBottom">
       <!-- Launch a game! -->
       <div id="left">
-        <h1>
-          Launch a game and the In-Game window will pop-up automatically!
-        </h1>
-      </div>
-      <!-- Launch a game! -->
-      <div id="middle">
-        What can you learn with this sample app?
-        <br /><br />
-        1. How to listen to real-time game events and how to identify specific
-        events like match start/end, kill, and death.
-        <br /><br />
-        2. How to use a transparent background window as a service bus, that
-        acts as the main controller of your app.
-        <br /><br />
-        3. How to use Hotkeys that show/hide your app while you are in-game.
+      
+        <div id="report"></div>
+        
+
       </div>
       <!-- picture -->
       <div id="right">
-        <div style="text-align: center">
-          <div style="display: inline-block">
-            <img src="../../img/cool_wolf.png" />
-          </div>
+        <div id="ad">
+          <img src="../../img/cool_wolf.png" />
         </div>
       </div>
     </div>
   </main>
 
   <script>
+
+    fetch("report.html")
+          .then((response) => response.text())
+          .then((data) => document.querySelector("#report").innerHTML = data);
+
     // Standard Google Universal Analytics code
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -81,6 +74,7 @@
     ga('require', 'displayfeatures');
     ga('send', 'pageview', '/desktop.html');
   </script>
+
 </body>
 
 </html>

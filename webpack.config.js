@@ -48,6 +48,11 @@ module.exports = env => ({
             filename: path.resolve(__dirname, './dist/in_game.html'),
             chunks: ['in_game']
         }),
+        new HtmlWebpackPlugin({
+            template: './src/report.html',
+            filename: path.resolve(__dirname, './dist/report.html'),
+            chunks: ['report']
+        }),
         new OverwolfPlugin(env)
     ]
 })

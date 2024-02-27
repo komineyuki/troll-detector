@@ -2,11 +2,12 @@
   "manifest_version": 1,
   "type": "WebApp",
   "meta": {
-    "name": "Sample App",
+    "name": "Troll Detector",
     "author": "Overwolf",
-    "version": "2.0.3",
-    "minimum-overwolf-version": "0.170.0",
-    "description": "An example app for developers new to Overwolf",
+    "version": "1.0.0",
+    "minimum-overwolf-version": "0.160.0",
+    "description": "Detects Trolls before the game starts",
+    "dock_button_title": "Troll Detector",
     "icon": "icons/IconMouseOver.png",
     "icon_gray": "icons/IconMouseNormal.png",
     "launcher_icon": "icons/desktop-icon.ico",
@@ -14,22 +15,15 @@
   },
   "permissions": [
     "Hotkeys",
-    "GameInfo",
-    "Clipboard",
-    "DesktopStreaming"
+    "GameInfo"
   ],
   "data": {
     "start_window": "background",
     "hotkeys": {
-      "sample_app_showhide": {
+      "sample_app_ts_showhide": {
         "title": "Show/Hide In-Game Window",
         "action-type": "toggle",
-        "default": "Ctrl+F"
-      },
-      "sample_app_second_screen": {
-        "title": "Toggle Second Screen Window",
-        "action-type": "custom",
-        "default": "Ctrl+G"
+        "default": "Alt+F"
       }
     },
     "protocol_override_domains": {
@@ -47,52 +41,30 @@
     "force_browser": "user",
     "windows": {
       "background": {
-        "file": "windows/background/background.html",
-        "background_optimization": true,
+        "file": "background.html",
+        "background_optimization": false,
         "is_background_page": true
       },
       "desktop": {
-        "file": "windows/desktop/desktop.html",
+        "file": "desktop.html",
         "desktop_only": true,
         "native_window": true,
-        "resizable": true,
-        "transparent": false,
-        "override_on_update": true,
-        "size": {
-          "width": 1212,
-          "height": 699
-        },
-        "min_size": {
-          "width": 1212,
-          "height": 699
-        }
-      },
-      "in_game": {
-        "file": "windows/in-game/in-game.html",
-        "in_game_only": true,
-        "focus_game_takeover": "ReleaseOnHidden",
-        "focus_game_takeover_release_hotkey": "sample_app_showhide",
         "resizable": false,
         "transparent": true,
         "override_on_update": true,
         "size": {
-          "width": 1212,
-          "height": 699
-        },
-        "min_size": {
-          "width": 1212,
-          "height": 699
+          "width": 850,
+          "height": 650
         }
       },
-      "second": {
-        "file": "windows/second/second.html",
-        "desktop_only": true,
-        "native_window": true,
+      "in_game": {
+        "file": "in_game.html",
+        "in_game_only": true,
+        "focus_game_takeover": "ReleaseOnHidden",
+        "focus_game_takeover_release_hotkey": "sample_app_ts_showhide",
         "resizable": false,
-        "transparent": false,
+        "transparent": true,
         "override_on_update": true,
-        "keep_window_location": true,
-        "disable_hardware_acceleration": true,
         "size": {
           "width": 1212,
           "height": 699
@@ -111,7 +83,7 @@
         5426,
         21634,
         8032,
-        21864,
+        10844,
         10906,
         10826,
         21404,
@@ -119,19 +91,16 @@
         21640,
         7314,
         21626,
-        8954,
-        10798,
-        22092,
-        21816
+        8954
       ]
     },
     "game_events": [
-      22092,
       21216,
       7764,
       5426,
       21634,
       8032,
+      10844,
       10906,
       10826,
       21404,
@@ -139,10 +108,7 @@
       21640,
       7314,
       21626,
-      10798,
-      8954,
-      21864,
-      21816
+      8954
     ],
     "launch_events": [
       {
@@ -150,11 +116,11 @@
         "event_data": {
           "game_ids": [
             21216,
-            21864,
             7764,
             5426,
             21634,
             8032,
+            10844,
             10906,
             10826,
             21404,
@@ -162,10 +128,7 @@
             21640,
             7314,
             21626,
-            8954,
-            10798,
-            22092,
-            21816
+            8954
           ]
         },
         "start_minimized": true
