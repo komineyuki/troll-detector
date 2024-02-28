@@ -27,15 +27,6 @@ export class AppWindow {
       this.currWindow.minimize();
     });
 
-    maximizeButton.addEventListener('click', () => {
-      if (!this.maximized) {
-        this.currWindow.maximize();
-      } else {
-        this.currWindow.restore();
-      }
-
-      this.maximized = !this.maximized;
-    });
   }
 
   public async getWindowState() {

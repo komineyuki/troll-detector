@@ -9,16 +9,25 @@ import { kWindowNames, kGameClassIds } from "../consts";
 import RunningGameInfo = overwolf.games.RunningGameInfo;
 import AppLaunchTriggeredEvent = overwolf.extensions.AppLaunchTriggeredEvent;
 
+
+
+
+
 // The background controller holds all of the app's background logic - hence its name. it has
 // many possible use cases, for example sharing data between windows, or, in our case,
 // managing which window is currently presented to the user. To that end, it holds a dictionary
 // of the windows available in the app.
 // Our background controller implements the Singleton design pattern, since only one
-// instance of it should exist.
+// instance of it should exist.  
+
+export var uid;
+
 class BackgroundController {
   private static _instance: BackgroundController;
   private _windows: Record<string, OWWindow> = {};
   private _gameListener: OWGameListener;
+
+
 
   private constructor() {
     // Populating the background controller's window dictionary
@@ -97,6 +106,9 @@ class BackgroundController {
   private isSupportedGame(info: RunningGameInfo) {
     return kGameClassIds.includes(info.classId);
   }
+
+
 }
 
-BackgroundController.instance().run();
+const instance = BackgroundController.instance();
+instance.run();
