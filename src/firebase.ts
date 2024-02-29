@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInAnonymously } from "firebase/auth";
-import { FieldValue, addDoc, arrayUnion, collection, doc, getDoc, getFirestore, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
+import { FieldValue, addDoc, arrayUnion, collection, doc, getCountFromServer, getDoc, getFirestore, query, serverTimestamp, setDoc, updateDoc, where } from "firebase/firestore";
 
 export class FirebaseInfo {
 
@@ -76,6 +76,18 @@ public login(f:Function){
     }catch (e){
         alert("Error checking report. " + e);
         return true;
+    }
+  }
+
+  public async getReportedCount(trollID:string){
+    console.log("getReportedCount()");
+    try{
+      const coll = collection(this.db, "Reports");
+      const q = query(coll, where("trollID", "==", trollID));
+      const snapshot = await getCountFromServer(q);
+      return snapshot.data().count;
+    }catch(e){
+      alert("ERROR: " + e);
     }
   }
 }

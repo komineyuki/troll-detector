@@ -23,7 +23,7 @@
       "sample_app_ts_showhide": {
         "title": "Show/Hide In-Game Window",
         "action-type": "toggle",
-        "default": "Alt+F"
+        "default": "Alt+G"
       }
     },
     "protocol_override_domains": {
@@ -66,12 +66,8 @@
         "transparent": true,
         "override_on_update": true,
         "size": {
-          "width": 1212,
-          "height": 699
-        },
-        "min_size": {
-          "width": 1212,
-          "height": 699
+          "width": 350,
+          "height": 200
         }
       }
     },

@@ -91,7 +91,7 @@ class BackgroundController {
       this._windows[kWindowNames.desktop].close();
       this._windows[kWindowNames.inGame].restore();
     } else {
-      this._windows[kWindowNames.desktop].restore();
+      // this._windows[kWindowNames.desktop].restore();
       this._windows[kWindowNames.inGame].close();
     }
   }
